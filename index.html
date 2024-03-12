@@ -8,7 +8,13 @@
   <!-- Load Leaflet code library: see http://leafletjs.com/download.html -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-
+  <script src="countries.js" type="text/javascript"></script>
+  
+    <!-- Load Esri Leaflet from CDN -->
+  <script src="https://unpkg.com/esri-leaflet@3.0.2/dist/esri-leaflet.js"
+    integrity="sha512-myckXhaJsP7Q7MZva03Tfme/MSF5a6HC2xryjAM4FxPLHGqlh5VALCbywHnzs2uPoF/4G/QVXyYDDSkp5nPfig=="
+    crossorigin=""></script>
+	
   <!-- Position the map and title with Cascading Style Sheet (CSS) -->
   <style>
   body { margin:0; padding:0; }
@@ -106,6 +112,45 @@
             this.closePopup();
         });
 	});
+	
+	/*======================================
+				Country Layers
+	=========================================
+	*/
+	var PEO = L.esri.featureLayer({
+	url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0',
+	where: "ISO_CC IN ('BEL','HRV','CZE','FRA','DEU','HUN','ITA','MCO','NLD','PRT','SVN','ESP','CHE','GBR','VAT','AUT')",
+	style: {color: 'blue', weight: 1}
+	}).addTo(map);
+
+	var ASEAN = L.esri.featureLayer({
+	url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0',
+	where: "ISO_CC IN ('BRN','KHM','IDN','LAO',	'MYS','MMR','PHL','SGP','THA','VNM')",
+	style: {color: 'red', weight: 1}
+	}).addTo(map);
+
+	var MISC = L.esri.featureLayer({
+	url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0',
+	where: "ISO_CC IN ('ECU','DOM','IsL','ZAF','CUB')",
+	style: {color: 'purple', weight: 1}
+	}).addTo(map);
+
+	var CANADA = L.esri.featureLayer({
+	url: 'https://services.arcgis.com/zmLUiqh7X11gGV2d/ArcGIS/rest/services/Canada_Provinical_boundaries_generalized/FeatureServer/0',
+	where: "POSTAL IN ('YT','BC','ON','QC','NB','NS','AB')",
+	style: {color: 'green', weight: 1}
+	}).addTo(map);
+
+	var USA = L.esri.featureLayer({
+	url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/USA_States_Generalized/FeatureServer/0',
+	where: "STATE_ABBR IN ('NY','FL','AK','DC')",
+	style: {color: 'orange', weight: 1}
+	}).addTo(map);
+	
+	
+	
+	
+	
 	
 	geojson.on("click", function (event) {
 	 if (event.layer.feature.properties.Name === "Southeast Asia") {
