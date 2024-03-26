@@ -93,7 +93,7 @@
       zoomControl: false,
       zoomSnap: 0.25,
       maxZoom: 6,
-      layers: [baseLayers["Imagery"]]
+      layers: [baseLayers["Terrain"]]
     });
 
     var layerControl = L.control.layers(baseLayers).addTo(map);
@@ -111,46 +111,43 @@
         });
 	});
 	
-	/*======================================
-				Country Layers
-	=========================================
-	*/
-	var PEO = L.esri.featureLayer({
-	url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0',
-	where: "ISO_CC IN ('BEL','HRV','CZE','FRA','DEU','HUN','ITA','MCO','NLD','PRT','SVN','ESP','CHE','GBR','VAT','AUT')",
-	style: {color: 'blue', weight: 1}
-	}).addTo(map);
+    /*======================================
+	    Country Layers
+    =========================================
+    */
+    var PEO = L.esri.featureLayer({
+    url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0',
+    where: "ISO_CC IN ('BEL','HRV','CZE','FRA','DEU','HUN','ITA','MCO','NLD','PRT','SVN','ESP','CHE','GBR','VAT','AUT')",
+    style: {color: 'blue', weight: 1}
+    }).addTo(map);
 
-	var ASEAN = L.esri.featureLayer({
-	url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0',
-	where: "ISO_CC IN ('BRN','KHM','IDN','LAO',	'MYS','MMR','PHL','SGP','THA','VNM')",
-	style: {color: 'red', weight: 1}
-	}).addTo(map);
+    var ASEAN = L.esri.featureLayer({
+    url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0',
+    where: "ISO_CC IN ('BRN','KHM','IDN','LAO',	'MYS','MMR','PHL','SGP','THA','VNM')",
+    style: {color: 'red', weight: 1}
+    }).addTo(map);
 
-	var MISC = L.esri.featureLayer({
-	url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0',
-	where: "ISO_CC IN ('ECU','DOM','IsL','ZAF','CUB')",
-	style: {color: 'purple', weight: 1}
-	}).addTo(map);
+    var MISC = L.esri.featureLayer({
+    url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0',
+    where: "ISO_CC IN ('ECU','DOM','IsL','ZAF','CUB')",
+    style: {color: 'purple', weight: 1}
+    }).addTo(map);
 
-	var CANADA = L.esri.featureLayer({
-	url: 'https://services.arcgis.com/zmLUiqh7X11gGV2d/ArcGIS/rest/services/Canada_Provinical_boundaries_generalized/FeatureServer/0',
-	where: "POSTAL IN ('YT','BC','ON','QC','NB','NS','AB')",
-	style: {color: 'green', weight: 1}
-	}).addTo(map);
+    var CANADA = L.esri.featureLayer({
+    url: 'https://services.arcgis.com/zmLUiqh7X11gGV2d/ArcGIS/rest/services/Canada_Provinical_boundaries_generalized/FeatureServer/0',
+    where: "POSTAL IN ('YT','BC','ON','QC','NB','NS','AB')",
+    style: {color: 'green', weight: 1}
+    }).addTo(map);
 
-	var USA = L.esri.featureLayer({
-	url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/USA_States_Generalized/FeatureServer/0',
-	where: "STATE_ABBR IN ('NY','FL','AK','DC')",
-	style: {color: 'orange', weight: 1}
-	}).addTo(map);
+    var USA = L.esri.featureLayer({
+    url: 'https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/USA_States_Generalized/FeatureServer/0',
+    where: "STATE_ABBR IN ('NY','FL','AK','DC')",
+    style: {color: 'orange', weight: 1}
+    }).addTo(map);
 	
 	
 	
-	
-	
-	
-	geojson.on("click", function (event) {
+    geojson.on("click", function (event) {
 	 if (event.layer.feature.properties.Name === "Southeast Asia") {
     // Zoom to that layer.
      map.fitBounds(event.layer.getBounds());
