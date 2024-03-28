@@ -14,6 +14,9 @@
   <script src="https://unpkg.com/esri-leaflet@3.0.2/dist/esri-leaflet.js"
     integrity="sha512-myckXhaJsP7Q7MZva03Tfme/MSF5a6HC2xryjAM4FxPLHGqlh5VALCbywHnzs2uPoF/4G/QVXyYDDSkp5nPfig=="
     crossorigin=""></script>
+  <!-- Map credit -->
+  <script type="text/javascript" src="leaflet-control-credits.js"></script>
+  <link rel="stylesheet" href="leaflet-control-credits.css" />
 	
   <!-- Position the map and title with Cascading Style Sheet (CSS) -->
   <style>
@@ -165,7 +168,15 @@
      window.open('https://bgrrw.github.io/Indochina/',"_self");
 	} 
 	});
-	
+	  
+    L.controlCredits({
+	imageurl: 'logo.png',
+	tooltip: 'Brad Garrow',
+	imagealt: 'None',
+	width: '30px',
+	height: '30px',
+	expandcontent: 'Mapping by <br/>Brad Garrow',
+    }).addTo(map);	
   </script>
 </body>
 </html>
