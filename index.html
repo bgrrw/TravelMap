@@ -102,7 +102,7 @@
       zoomControl: false,
       zoomSnap: 0.25,
       maxZoom: 6,
-      layers: [baseLayers["Terrain"]]
+      layers: [baseLayers["Terrain"],Extremes]
     });
 
     var layerControl = L.control.layers(baseLayers,overlays).addTo(map);
@@ -158,11 +158,10 @@
     }).addTo(map);
 	
     // Extreme Points
-
-    var North = L.marker([65.59193, -134.75112]).addTo(map).addTo(Extremes);
-    var South = L.marker([-34.83324, 19.99992]).addTo(map).addTo(Extremes);
-    var East = L.marker([16.93605, 121.13886]).addTo(map).addTo(Extremes);
-    var West = L.marker([61.20358, -150.02142]).addTo(map).addTo(Extremes);
+    var North = L.marker([65.59193, -134.75112]).addTo(map).addTo(Extremes).bindPopup("North").openPopup();
+    var South = L.marker([-34.83324, 19.99992]).addTo(map).addTo(Extremes).bindPopup("South").openPopup();
+    var East = L.marker([16.93605, 121.13886]).addTo(map).addTo(Extremes).bindPopup("East").openPopup();
+    var West = L.marker([61.20358, -150.02142]).addTo(map).addTo(Extremes).bindPopup("West").openPopup();
 
 	  
     geojson.on("click", function (event) {
