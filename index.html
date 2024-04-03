@@ -117,13 +117,13 @@
 	  
     geojson.eachLayer((layer) => {
 	layer.bindPopup(layer.feature.properties.Name);
-	layer.on('mouseover', function (e) {
-             this.openPopup();
-        });
+	//layer.on('mouseover', function (e) {
+        //     this.openPopup();
+        //});
 
-        layer.on('mouseout', function (e) {
-           this.closePopup();
-       });
+        //layer.on('mouseout', function (e) {
+        //   this.closePopup();
+       //});
     });
 	
     /*======================================
@@ -167,15 +167,15 @@
     var West = L.marker([61.20358, -150.02142]).addTo(map).addTo(Extremes).bindPopup("Point Woronzof Beach- Anchorage");
 
     var extreme2Icon = L.icon({
-      iconUrl: 'CanoeMarker.png',
+      iconUrl: 'HikeMarker.png',
       iconSize:     [32, 32],
       iconAnchor:   [16, 32],
       popupAnchor:  [0, -32]
-});
-
-	  
+    });
+ 
     var East2 = L.marker([-25.13368, 31.9438],{icon: extreme2Icon}).addTo(map).addTo(Extremes2).bindPopup("Sabie River - Kruger NP");
     var West2 = L.marker([21.17172, 94.85854],{icon: extreme2Icon}).addTo(map).addTo(Extremes2).bindPopup("Irrawaddy River- Bagan");
+
 	  
     geojson.on("click", function (event) {
 	 if (event.layer.feature.properties.Name === "Southeast Asia") {
