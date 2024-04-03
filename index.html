@@ -81,9 +81,12 @@
   <script>
 
     var Extremes = L.layerGroup()
+    var Extremes2 = L.layerGroup()
 
     var overlays = {
-	'Extreme Travel Points (Based on Lat & Long)': Extremes
+	'Extreme Travel Points (Based on Lat & Long)': Extremes,
+	'Extreme Travel Points (Based on direction of travel from Belleville)': Extremes2,
+	    
     };
 	  
     var baseLayers = {
@@ -162,7 +165,9 @@
     var South = L.marker([-34.83324, 19.99992]).addTo(map).addTo(Extremes).bindPopup("Cape Agulhas, Southern tip of Africa");
     var East = L.marker([16.93605, 121.13886]).addTo(map).addTo(Extremes).bindPopup("Tappiyah Falls - Batad Rice Terraces");
     var West = L.marker([61.20358, -150.02142]).addTo(map).addTo(Extremes).bindPopup("Point Woronzof Beach- Anchorage");
-
+    
+    var East2 = L.circleMarker([-25.13368, 31.9438]).addTo(map).addTo(Extremes2).bindPopup("Sabie River - Kruger NP");
+    var West2 = L.circleMarker([21.17172, 94.85854]).addTo(map).addTo(Extremes2).bindPopup("Irrawaddy River- Bagan");
 	  
     geojson.on("click", function (event) {
 	 if (event.layer.feature.properties.Name === "Southeast Asia") {
