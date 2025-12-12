@@ -61,7 +61,6 @@
   text-shadow: 2px 2px 20px red;
   }
 	  
-	  
   .popupImage {
     max-width: 200px;
 }
@@ -69,13 +68,11 @@
 </style>
 </head>
 <body>
-
   <!-- Display the map and title with HTML division tags  -->
   <!-- <div id="map-title">Brad & Sam's Yukon Adventures</div> -->
   <div id="map"></div>
   <div id="title-pane"><p>Brad & Sam's Travel Map</p></div>
-
-
+	
   <!-- Create the interactive map content with JavaScript (.js) -->
   <script>
 
@@ -84,8 +81,7 @@
 
     var overlays = {
 	'Extreme Travel Points (Based on Lat & Long)': Extremes,
-	'Extreme Travel Points (Based on direction of travel from Belleville)': Extremes2,
-	    
+	'Extreme Travel Points (Based on direction of travel from Belleville)': Extremes2,   
     };
 	  
     var baseLayers = {
@@ -196,7 +192,6 @@
     var East2 = L.marker([-25.13368, 31.9438],{icon: extreme2Icon}).addTo(map).addTo(Extremes2).bindPopup("Sabie River - Kruger NP");
     var West2 = L.marker([21.17172, 94.85854],{icon: extreme2Icon}).addTo(map).addTo(Extremes2).bindPopup("Irrawaddy River- Bagan");
 
-	  
     geojson.on("click", function (event) {
 	 if (event.layer.feature.properties.Name === "Southeast Asia") {
     // Zoom to that layer.
@@ -227,5 +222,6 @@
   </script>
 </body>
 </html>
+
 
 
